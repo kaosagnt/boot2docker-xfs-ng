@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# docker-enter based upon 
+# https://github.com/jpetazzo/nsenter/blob/master/docker-enter
+# Greatly simplified by Ian McWilliam <kaosagnt@gmail.com> 
+
+if [ -z "${1}" ]; then
+	printf "%s\n\n%s\n" \
+		"Usage: `basename "${0}"` CONTAINER [COMMAND [ARG]...]" \
+		"Enters the Docker CONTAINER and executes the specified COMMAND."
+
+	exit
+fi
+
+CONTAINER_PID=$(docker inspect --format '{{.State.Pid}}' "${1}")
+
+if [ -z "${CONTAINER_PID}" ] || [ ${CONTAINER_PID} -eq 0 ]; then
+	printf "%s%s\n" \
+			"`basename "${0}"` Container not running. " \
+			"Unable to enter name space."
+	exit 1
+fi
+
+shift
+sudo nsenter --target ${CONTAINER_PID} --mount --uts --ipc --net --pid -- "$@"
