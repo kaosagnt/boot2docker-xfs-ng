@@ -19,6 +19,9 @@ See [docker/machine#4537](https://github.com/docker/machine/issues/4537) for som
 ## Features
 
 * Recent Linux Kernel, Docker pre-installed and ready-to-use
+* Tiny Core Linux 9.x
+* CTOP
+* XFS filesystem by default. (Will automount exisitng `ext4` filesystems).
 * VM guest additions (VirtualBox, Parallels, VMware, XenServer)
 * Container persistence via disk automount on `/var/lib/docker`
 * SSH keys persistence via disk automount
@@ -40,8 +43,25 @@ the Boot2Docker VM, and other necessary tools.
 ## How to use
 
 Boot2Docker is used via [Docker Machine](https://docs.docker.com/machine/overview/) 
-(installed as part of Docker Toolbox) which leverages VirtualBox's `VBoxManage` to
+(installed as part of Docker Toolbox) which leverages a Hyperviser Driver to
 initialise, start, stop and delete the VM right from the command line.
+
+Machine Hyperviser drivers include:
+
+Amazon Web Services
+Microsoft Azure
+Digital Ocean
+Exoscale
+Google Compute Engine
+Generic
+Microsoft Hyper-V
+OpenStack
+Rackspace
+IBM Softlayer
+Oracle VirtualBox
+VMware vCloud Air
+VMware Fusion
+VMware vSphere
 
 ## More information
 
