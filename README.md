@@ -69,7 +69,7 @@ See [Frequently asked questions](FAQ.md) for more details.
 
 #### Boot logs
 
-Logs can be found in /var/lib/boot2Docker/log/
+Logs can be found in /var/lib/boot2docker/log/
 
 #### Docker daemon options
 
