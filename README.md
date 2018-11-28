@@ -37,9 +37,6 @@ Installation should be performed via [Docker Toolbox](https://docs.docker.com/to
 which installs [Docker Machine](https://docs.docker.com/machine/overview/), 
 the Boot2Docker VM, and other necessary tools.
 
-The [ISO can be downloaded
-here](https://github.com/boot2docker/boot2docker/releases).
-
 ## How to use
 
 Boot2Docker is used via [Docker Machine](https://docs.docker.com/machine/overview/) 
@@ -50,12 +47,9 @@ initialise, start, stop and delete the VM right from the command line.
 
 See [Frequently asked questions](FAQ.md) for more details.
 
-#### Boot script log
+#### Boot logs
 
-The bootup script output is logged to `/boot.log`, so you can see (and
-potentially debug) what happens. Note that this is not persistent between boots
-because we're logging from before the persistence partition is mounted (and it
-may not exist at all).
+Logs can be found in /var/lib/boot2Docker/log/
 
 #### Docker daemon options
 
@@ -162,4 +156,5 @@ If you are not using the Docker Machine management tool, you can create an `ext4
 formatted partition with the label `boot2docker-data` (`mkfs.ext4 -L
 boot2docker-data /dev/sdX5`) to your VM or host, and Boot2Docker will automount
 it on `/mnt/sdX` and then softlink `/mnt/sdX/var/lib/docker` to
-`/var/lib/docker`.
+`/var/lib/docker`. The same can be done for an `xfs` partition but with the
+disk label `bt2dckr-data` as `xfs` labels cannot be more than 12 characters.
