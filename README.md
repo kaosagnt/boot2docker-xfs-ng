@@ -48,20 +48,20 @@ initialise, start, stop and delete the VM right from the command line.
 
 Machine Hyperviser drivers include:
 
-Amazon Web Services
-Microsoft Azure
-Digital Ocean
-Exoscale
-Google Compute Engine
-Generic
-Microsoft Hyper-V
-OpenStack
-Rackspace
-IBM Softlayer
-Oracle VirtualBox
-VMware vCloud Air
-VMware Fusion
-VMware vSphere
+* Amazon Web Services
+* Microsoft Azure
+* Digital Ocean
+* Exoscale
+* Google Compute Engine
+*Generic
+* Microsoft Hyper-V
+* OpenStack
+* Rackspace
+* IBM Softlayer
+* Oracle VirtualBox
+* VMware vCloud Air
+* VMware Fusion
+* VMware vSphere
 
 ## More information
 
