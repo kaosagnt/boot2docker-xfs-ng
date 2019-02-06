@@ -273,7 +273,6 @@ RUN tcl-tce-load \
 		git \
 		iproute2 \
 		iptables \
-		ncurses-terminfo \
 		nfs-utils \
 		openssh \
 		openssl \
