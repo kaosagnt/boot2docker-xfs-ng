@@ -6,8 +6,10 @@ RUN apt-get update; \
 	apt-get install -y --no-install-recommends \
 		bash-completion \
 		bc \
+		bison \
 		ca-certificates \
 		cpio \
+		flex \
 		gcc \
 		git \
 		gnupg dirmngr \
@@ -194,7 +196,7 @@ ENV LINUX_GPG_KEYS \
 		647F28654894E3BD457199BE38DBBDC86092693E
 
 # updated via "update.sh"
-ENV LINUX_VERSION 4.14.98
+ENV LINUX_VERSION 4.19.20
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
 	wget -O /linux.tar.asc "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
