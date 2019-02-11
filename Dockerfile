@@ -45,12 +45,12 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 9.x
-ENV TCL_VERSION 9.0
+ENV TCL_MAJOR 10.x
+ENV TCL_VERSION 10.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="e8fa99e187ded76a1e2470b9f5af78a1"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="534e09719f8a7ffaef4a9a0f847131a0"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
@@ -130,7 +130,7 @@ RUN mkdir -p proc; \
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/tcz/squashfs-tools.tcz.dep
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/tcz/squashfs-tools.tcz.md5.txt
 # updated via "update.sh"
-ENV TCL_PACKAGES="squashfs-tools.tcz liblzma.tcz lzo.tcz libzstd.tcz" TCL_PACKAGE_MD5__squashfs_tools_tcz="a44331fa2117314e62267147b6876a49" TCL_PACKAGE_MD5__liblzma_tcz="ad015f0dd6ee2684031de5eded850410" TCL_PACKAGE_MD5__lzo_tcz="c9a1260675774c50cea1a490978b100d" TCL_PACKAGE_MD5__libzstd_tcz="a7f383473a4ced6c79e8b1a0cc9ad167"
+ENV TCL_PACKAGES="squashfs-tools.tcz liblzma.tcz lzo.tcz libzstd.tcz" TCL_PACKAGE_MD5__squashfs_tools_tcz="a44331fa2117314e62267147b6876a49" TCL_PACKAGE_MD5__liblzma_tcz="846ce1b68690e46f61aff2f952da433f" TCL_PACKAGE_MD5__lzo_tcz="c9a1260675774c50cea1a490978b100d" TCL_PACKAGE_MD5__libzstd_tcz="a7f383473a4ced6c79e8b1a0cc9ad167"
 
 RUN for package in $TCL_PACKAGES; do \
 		eval 'md5="$TCL_PACKAGE_MD5__'"$(echo "$package" | sed -r 's/[^a-zA-Z0-9]+/_/g')"'"'; \
@@ -306,6 +306,8 @@ RUN make -C /usr/src/linux INSTALL_HDR_PATH=/usr/local headers_install
 
 # https://lkml.org/lkml/2018/4/12/711 (https://github.com/boot2docker/boot2docker/pull/1322)
 # https://github.com/jirka-h/haveged/releases
+
+# XXX TODO: TCL 10.x has a TCZ for this. Convert this over one day. XXX
 ENV HAVEGED_VERSION 1.9.4
 RUN wget -O /haveged.tgz "https://github.com/jirka-h/haveged/archive/${HAVEGED_VERSION}.tar.gz"; \
 	mkdir /usr/src/haveged; \
