@@ -21,11 +21,6 @@ addUser(){
 	echo -e "$USER\tALL=NOPASSWD: ALL" >> /etc/sudoers
 }
 
-function check_if_running_in_vm() {
-	sleep 1
-	grep -q ^flags.*\ hypervisor /proc/cpuinfo
-}
-
 ### END functions
 
 # Main
@@ -133,18 +128,6 @@ echo "${GREEN} Done.${NORMAL}"
 
 modprobe loop 2>/dev/null
 #modprobe ohci_hcd
-
-# Hopefully by the time we reach here udevd has populated /dev
-# and /dev/hwrng exists if it is available.
-
-check_if_running_in_vm
-
-if [ -e /dev/hwrng ] && [ $? -eq 0 ]; then
-	# Generate entropy...
-	echo -n "${GREEN}Starting hardware entropy generation ${MAGENTA}rngd"
-	/usr/local/bin/rngd -r /dev/urandom > /dev/null 2>&1
-	echo "${GREEN} Done.${NORMAL}"
-fi
 
 if [ -n "$NOZSWAP" ]; then
 	echo "${BLUE}Skipping compressed swap in ram as requested from the boot command line.${NORMAL}"
