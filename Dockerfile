@@ -25,7 +25,6 @@ RUN apt-get update; \
 		wget \
 		xorriso \
 		xz-utils \
-
 		libcurl4-openssl-dev \
 		libxml2-dev \
 		libsysfs-dev \
@@ -284,7 +283,6 @@ RUN tcl-tce-load \
 		tar \
 		util-linux \
 		xz \
-
 		libxml2 \
 		ncurses ncursesw \
 		ncurses-terminfo \
