@@ -406,7 +406,7 @@ RUN DOCKER_CHANNEL='edge'; \
 	done
 
 # CTOP - https://github.com/bcicen/ctop
-ENV CTOP_VERSION 0.7.1
+ENV CTOP_VERSION 0.7.2
 RUN wget -O  usr/local/bin/ctop \
 	https://github.com/bcicen/ctop/releases/download/v$CTOP_VERSION/ctop-$CTOP_VERSION-linux-amd64 ; \
 	chmod +x usr/local/bin/ctop
