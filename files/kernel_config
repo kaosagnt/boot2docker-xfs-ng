@@ -1,13 +1,13 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.19.38 Kernel Configuration
+# Linux/x86 4.19.40 Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 9.0.1 20190312 (Red Hat 9.0.1-0.10)
+# Compiler: gcc (GCC) 9.1.1 20190503 (Red Hat 9.1.1-1)
 #
 CONFIG_CC_IS_GCC=y
-CONFIG_GCC_VERSION=90001
+CONFIG_GCC_VERSION=90101
 CONFIG_CLANG_VERSION=0
 CONFIG_IRQ_WORK=y
 CONFIG_BUILDTIME_EXTABLE_SORT=y
@@ -4225,7 +4225,6 @@ CONFIG_STAGING=y
 # Gasket devices
 #
 # CONFIG_STAGING_GASKET_FRAMEWORK is not set
-# CONFIG_XIL_AXIS_FIFO is not set
 # CONFIG_EROFS_FS is not set
 CONFIG_X86_PLATFORM_DEVICES=y
 CONFIG_ACER_WMI=m
