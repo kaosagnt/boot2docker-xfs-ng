@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 
 SHELL ["/bin/bash", "-Eeuo", "pipefail", "-xc"]
 
@@ -28,7 +28,7 @@ RUN apt-get update; \
 		libcurl4-openssl-dev \
 		libxml2-dev \
 		libsysfs-dev \
-		libssl1.0-dev \
+		libssl-dev \
 		libgcrypt20 \
 		automake \
 		pkg-config \
