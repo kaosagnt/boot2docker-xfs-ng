@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.19.79 Kernel Configuration
+# Linux/x86 4.19.80 Kernel Configuration
 #
 
 #
@@ -3879,7 +3879,6 @@ CONFIG_USB_SERIAL_QT2=m
 # CONFIG_USB_EMI26 is not set
 # CONFIG_USB_ADUTUX is not set
 # CONFIG_USB_SEVSEG is not set
-# CONFIG_USB_RIO500 is not set
 # CONFIG_USB_LEGOTOWER is not set
 # CONFIG_USB_LCD is not set
 # CONFIG_USB_CYPRESS_CY7C63 is not set
