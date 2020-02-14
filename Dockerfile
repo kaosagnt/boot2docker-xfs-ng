@@ -32,6 +32,7 @@ RUN apt-get update; \
 		libgcrypt20 \
 		automake \
 		pkg-config \
+		rsync \
 	; \
 	rm -rf /var/lib/apt/lists/*
 
@@ -44,12 +45,12 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 10.x
-ENV TCL_VERSION 10.1
+ENV TCL_MAJOR 11.x
+ENV TCL_VERSION 11.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="ec65d3b2bbb64f62a171f60439c84127"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="ea8699a39115289ed00d807eac4c3118"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
@@ -265,7 +266,7 @@ RUN tcl-tce-load \
 		iptables \
 		nfs-utils \
 		openssh \
-		openssl \
+		openssl-1.1.1 \
 		parted \
 		procps-ng \
 		rsync \
@@ -273,8 +274,8 @@ RUN tcl-tce-load \
 		util-linux \
 		xz \
 		libxml2 \
-		ncurses ncursesw \
-		ncurses-terminfo \
+		ncursesw \
+		ncursesw-terminfo \
 		nano-doc nano-locale \
 		nano file \
 		xfsprogs \
