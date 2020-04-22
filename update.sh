@@ -3,7 +3,7 @@ set -Eeuo pipefail
 
 # TODO http://distro.ibiblio.org/tinycorelinux/latest-x86_64
 major='11.x'
-version='11.0' # TODO auto-detect latest
+version='11.1' # TODO auto-detect latest
 # 9.x doesn't seem to use ".../archive/X.Y.Z/..." in the same way as 8.x :(
 
 mirrors=(
