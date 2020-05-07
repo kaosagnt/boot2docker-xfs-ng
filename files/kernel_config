@@ -1,10 +1,10 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.38 Kernel Configuration
+# Linux/x86 5.4.39 Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 10.0.1 20200328 (Red Hat 10.0.1-0.11)
+# Compiler: gcc (GCC) 10.0.1 20200430 (Red Hat 10.0.1-0.13)
 #
 CONFIG_CC_IS_GCC=y
 CONFIG_GCC_VERSION=100001
