@@ -1,13 +1,13 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.115 Kernel Configuration
+# Linux/x86 5.4.116 Kernel Configuration
 #
 
 #
-# Compiler: gcc (GCC) 11.0.1 20210405 (Red Hat 11.0.1-0)
+# Compiler: gcc (GCC) 11.1.1 20210428 (Red Hat 11.1.1-1)
 #
 CONFIG_CC_IS_GCC=y
-CONFIG_GCC_VERSION=110001
+CONFIG_GCC_VERSION=110101
 CONFIG_CLANG_VERSION=0
 CONFIG_CC_CAN_LINK=y
 CONFIG_CC_HAS_ASM_GOTO=y
