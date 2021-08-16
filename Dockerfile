@@ -403,9 +403,9 @@ RUN DOCKER_CHANNEL='stable'; \
 	done
 
 # CTOP - https://github.com/bcicen/ctop
-ENV CTOP_VERSION 0.7.5
+ENV CTOP_VERSION 0.7.6
 RUN wget -O  usr/local/bin/ctop \
-	https://github.com/bcicen/ctop/releases/download/v$CTOP_VERSION/ctop-$CTOP_VERSION-linux-amd64 ; \
+	https://github.com/bcicen/ctop/releases/download/$CTOP_VERSION/ctop-$CTOP_VERSION-linux-amd64 ; \
 	chmod +x usr/local/bin/ctop
 
 # Copy in extra etc/* files
