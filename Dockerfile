@@ -45,12 +45,12 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 11.x
-ENV TCL_VERSION 11.1
+ENV TCL_MAJOR 12.x
+ENV TCL_VERSION 12.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="3c5846fd0eb2f4ecc15e424678ef7919"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="c83daf94a7095af711bc8a3e6968b5a7"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
@@ -185,7 +185,7 @@ ENV LINUX_GPG_KEYS \
 		647F28654894E3BD457199BE38DBBDC86092693E
 
 # updated via "update.sh"
-ENV LINUX_VERSION 5.4.151
+ENV LINUX_VERSION 5.10.71
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
 	wget -O /linux.tar.asc "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
