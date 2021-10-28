@@ -409,7 +409,7 @@ RUN wget -O  usr/local/bin/ctop \
 	chmod +x usr/local/bin/ctop
 
 # Copy in extra etc/* files
-COPY files/etc/* etc/
+COPY files/etc etc/
 
 # Install docker-enter. Note: The nsenter utility is installed
 # from the Tiny Core Linux repo as a part of util-linux package so we use
