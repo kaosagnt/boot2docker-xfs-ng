@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.10.84 Kernel Configuration
+# Linux/x86 5.10.85 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.2.1 20211203 (Red Hat 11.2.1-7)"
 CONFIG_CC_IS_GCC=y
