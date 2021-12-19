@@ -402,10 +402,17 @@ RUN DOCKER_CHANNEL='stable'; \
 		chroot . "$binary" --version; \
 	done
 
+# Docker cli plugins
+ENV DOCKER_BUILDX_VERSION 0.7.1
+RUN mkdir -p usr/local/lib/docker/cli-plugins; \
+	wget -O usr/local/lib/docker/cli-plugins/docker-buildx \
+	"https://github.com/docker/buildx/releases/download/v$DOCKER_BUILDX_VERSION/buildx-v$DOCKER_BUILDX_VERSION.linux-amd64"; \
+	chmod +x usr/local/lib/docker/cli-plugins/docker-buildx
+
 # CTOP - https://github.com/bcicen/ctop
 ENV CTOP_VERSION 0.7.6
 RUN wget -O  usr/local/bin/ctop \
-	https://github.com/bcicen/ctop/releases/download/$CTOP_VERSION/ctop-$CTOP_VERSION-linux-amd64 ; \
+	https://github.com/bcicen/ctop/releases/download/$CTOP_VERSION/ctop-$CTOP_VERSION-linux-amd64; \
 	chmod +x usr/local/bin/ctop
 
 # Copy in extra etc/* files
