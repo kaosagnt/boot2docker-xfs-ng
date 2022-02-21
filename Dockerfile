@@ -45,12 +45,12 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 12.x
-ENV TCL_VERSION 12.0
+ENV TCL_MAJOR 13.x
+ENV TCL_VERSION 13.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="c83daf94a7095af711bc8a3e6968b5a7"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="91caf2cb61b38b3e3ef3be4d8f6f8701"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
@@ -185,7 +185,7 @@ ENV LINUX_GPG_KEYS \
 		647F28654894E3BD457199BE38DBBDC86092693E
 
 # updated via "update.sh"
-ENV LINUX_VERSION 5.10.101
+ENV LINUX_VERSION 5.15.24
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
 	wget -O /linux.tar.asc "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
@@ -325,7 +325,7 @@ RUN tcl-tce-load open-vm-tools; \
 	tcl-chroot vmhgfs-fuse --version; \
 	tcl-chroot vmtoolsd --version
 
-ENV PARALLELS_VERSION 16.5.0-49183
+ENV PARALLELS_VERSION 17.1.1-51537
 
 RUN wget -O /parallels.tgz "https://download.parallels.com/desktop/v${PARALLELS_VERSION%%.*}/$PARALLELS_VERSION/ParallelsTools-$PARALLELS_VERSION-boot2docker.tar.gz"; \
 	mkdir /usr/src/parallels; \
