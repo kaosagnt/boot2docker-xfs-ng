@@ -4,4 +4,9 @@
 *.sh
 .dockerignore
 .git
-Dockerfile
+Dockerfile*
+FAQ.md
+LICENCE
+MAINTAINERS
+README.md
+update.sh
