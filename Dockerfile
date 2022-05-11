@@ -46,11 +46,11 @@ WORKDIR /rootfs
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
 ENV TCL_MAJOR 13.x
-ENV TCL_VERSION 13.0
+ENV TCL_VERSION 13.1
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="91caf2cb61b38b3e3ef3be4d8f6f8701"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="337441ac3eb75561a9d702d783e678ba"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
