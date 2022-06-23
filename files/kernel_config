@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.15.48 Kernel Configuration
+# Linux/x86 5.15.49 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 12.1.1 20220507 (Red Hat 12.1.1-1)"
 CONFIG_CC_IS_GCC=y
@@ -5575,6 +5575,7 @@ CONFIG_CRYPTO_LIB_POLY1305_RSIZE=11
 CONFIG_CRYPTO_LIB_SHA256=y
 # end of Crypto library routines
 
+CONFIG_LIB_MEMNEQ=y
 CONFIG_CRC_CCITT=y
 CONFIG_CRC16=y
 CONFIG_CRC_T10DIF=y
