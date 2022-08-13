@@ -12,7 +12,7 @@ RUN apt-get update; \
 		flex \
 		gcc \
 		git \
-		gnupg dirmngr \
+		gnupg2 \
 		golang-go \
 		kmod \
 		libc6-dev \
@@ -177,47 +177,23 @@ RUN tcl-tce-load bash; \
 	source etc/profile.d/boot2docker-ps1.sh; \
 	[ "$PS1" = '\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ ' ]
 
-# https://www.kernel.org/category/signatures.html#important-fingerprints
-ENV LINUX_GPG_KEYS \
-# Linus Torvalds
-		ABAF11C65A2970B130ABE3C479BE3E4300411886 \
-# Greg Kroah-Hartman
-		647F28654894E3BD457199BE38DBBDC86092693E
-
 # updated via "update.sh"
 ENV LINUX_VERSION 5.15.59
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
-	wget -O /linux.tar.asc "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
-	\
-# decompress (signature is for the decompressed file)
-	xz --decompress /linux.tar.xz; \
-	[ -f /linux.tar ] && [ ! -f /linux.tar.xz ]; \
+	wget -O /linux.tar.sign "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
 	\
 # verify
+	# https://www.kernel.org/category/signatures.html
 	export GNUPGHOME="$(mktemp -d)"; \
-	for key in $LINUX_GPG_KEYS; do \
-		for mirror in \
-			ha.pool.sks-keyservers.net \
-			pgp.mit.edu \
-			hkp://p80.pool.sks-keyservers.net:80 \
-			ipv4.pool.sks-keyservers.net \
-			keyserver.ubuntu.com \
-			hkp://keyserver.ubuntu.com:80 \
-		; do \
-			if gpg --batch --verbose --keyserver "$mirror" --keyserver-options timeout=5 --recv-keys "$key"; then \
-				break; \
-			fi; \
-		done; \
-		gpg --batch --fingerprint "$key"; \
-	done; \
-	gpg --batch --verify /linux.tar.asc /linux.tar; \
-	gpgconf --kill all; \
+	gpg2 --locate-keys torvalds@kernel.org gregkh@kernel.org; \
+	xz -cd /linux.tar.xz | gpg2 --verify /linux.tar.sign - ; \
 	rm -rf "$GNUPGHOME"; \
 	\
 # extract
+	xz --decompress /linux.tar.xz; \
 	tar --extract --file /linux.tar --directory /usr/src; \
-	rm /linux.tar /linux.tar.asc; \
+	rm /linux.tar /linux.tar.sign; \
 	ln -sT "linux-$LINUX_VERSION" /usr/src/linux; \
 	[ -d /usr/src/linux ]
 
