@@ -350,7 +350,7 @@ RUN wget -O usr/local/sbin/cgroupfs-mount "https://github.com/tianon/cgroupfs-mo
 	chmod +x usr/local/sbin/cgroupfs-mount; \
 	tcl-chroot cgroupfs-mount
 
-ENV DOCKER_VERSION 20.10.23
+ENV DOCKER_VERSION 23.0.0
 
 # Get the Docker binaries with version that matches our boot2docker version.
 #RUN DOCKER_CHANNEL='edge'; \
