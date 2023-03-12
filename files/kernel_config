@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.15.99 Kernel Configuration
+# Linux/x86 5.15.100 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0"
 CONFIG_CC_IS_GCC=y
@@ -1469,7 +1469,6 @@ CONFIG_NET_SCH_INGRESS=m
 #
 CONFIG_NET_CLS=y
 CONFIG_NET_CLS_BASIC=m
-CONFIG_NET_CLS_TCINDEX=m
 CONFIG_NET_CLS_ROUTE4=m
 CONFIG_NET_CLS_FW=m
 CONFIG_NET_CLS_U32=m
