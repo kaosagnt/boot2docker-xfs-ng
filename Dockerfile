@@ -45,12 +45,12 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 13.x
-ENV TCL_VERSION 13.1
+ENV TCL_MAJOR 14.x
+ENV TCL_VERSION 14.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="337441ac3eb75561a9d702d783e678ba"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="9b83cc61e606c631fa58dd401ee3f631"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
@@ -152,6 +152,8 @@ RUN { \
 	} > /usr/local/bin/tcl-tce-load; \
 	chmod +x /usr/local/bin/tcl-tce-load
 
+COPY files/tcemirror ./opt/
+
 RUN tcl-tce-load bash; \
 	tcl-chroot bash --version; \
 # delete all the TCL user-specific profile/rc files -- they have odd settings like auto-login from interactive root directly to "tcuser"
@@ -178,7 +180,7 @@ RUN tcl-tce-load bash; \
 	[ "$PS1" = '\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ ' ]
 
 # updated via "update.sh"
-ENV LINUX_VERSION 5.15.107
+ENV LINUX_VERSION 6.1.24
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
 	wget -O /linux.tar.sign "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
@@ -252,7 +254,7 @@ RUN tcl-tce-load \
 		libxml2 \
 		ncursesw \
 		ncursesw-terminfo \
-		nano-doc nano-locale \
+		nano-locale \
 		nano file \
 		xfsprogs \
 		haveged
@@ -301,7 +303,7 @@ RUN tcl-tce-load open-vm-tools; \
 	tcl-chroot vmhgfs-fuse --version; \
 	tcl-chroot vmtoolsd --version
 
-ENV PARALLELS_VERSION 17.1.1-51537
+ENV PARALLELS_VERSION 18.2.0-53488
 
 RUN wget -O /parallels.tgz "https://download.parallels.com/desktop/v${PARALLELS_VERSION%%.*}/$PARALLELS_VERSION/ParallelsTools-$PARALLELS_VERSION-boot2docker.tar.gz"; \
 	mkdir /usr/src/parallels; \
@@ -350,7 +352,7 @@ RUN wget -O usr/local/sbin/cgroupfs-mount "https://github.com/tianon/cgroupfs-mo
 	chmod +x usr/local/sbin/cgroupfs-mount; \
 	tcl-chroot cgroupfs-mount
 
-ENV DOCKER_VERSION 23.0.3
+ENV DOCKER_VERSION 23.0.4
 
 # Get the Docker binaries with version that matches our boot2docker version.
 #RUN DOCKER_CHANNEL='edge'; \
