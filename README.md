@@ -6,7 +6,7 @@ It uses TCL (TinyCore Linux 14.x) and the XFS filesystem by default.
 
 Boot2Docker is a lightweight Linux distribution made specifically to run
 [Docker](https://www.docker.com/) containers. It runs completely from RAM, is a
-~69MB download and boots quickly.
+~85MB download and boots quickly.
 
 ## Important Note
 
