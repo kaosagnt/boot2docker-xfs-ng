@@ -346,7 +346,7 @@ RUN make -C /usr/src/linux/tools/hv hv_kvp_daemon; \
 RUN tcl-chroot depmod "$(< /usr/src/linux/include/config/kernel.release)"
 
 # https://github.com/tianon/cgroupfs-mount/releases
-ENV CGROUPFS_MOUNT_VERSION 1.4
+ENV CGROUPFS_MOUNT_VERSION master
 
 RUN wget -O usr/local/sbin/cgroupfs-mount "https://github.com/tianon/cgroupfs-mount/raw/${CGROUPFS_MOUNT_VERSION}/cgroupfs-mount"; \
 	chmod +x usr/local/sbin/cgroupfs-mount; \
