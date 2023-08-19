@@ -107,7 +107,7 @@ echo -n "${BLUE}Starting udev daemon for hotplug support...${NORMAL}"
 /sbin/udevd --daemon 2>&1 >/dev/null
 #/sbin/udevadm trigger --action=add 2>/dev/null >/dev/null &
 /sbin/udevadm trigger --action=add 2>&1 >/dev/null &
-/sbin/udevadm settle -t 10 2>&1 >/dev/null
+/sbin/udevadm settle -t 5 2>&1 >/dev/null &
 rotdash $!
 echo "${GREEN} Done.${NORMAL}"
 
