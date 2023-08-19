@@ -494,6 +494,7 @@ COPY files/isolinux.cfg /tmp/iso/isolinux/
 
 COPY files/init.d/* ./etc/init.d/
 COPY files/bootsync.sh ./opt/
+RUN echo "$TCL_VERSION" > ./usr/share/doc/tc/release.txt
 
 # temporary boot debugging aid
 #RUN sed -i '2i set -x' etc/init.d/tc-config
