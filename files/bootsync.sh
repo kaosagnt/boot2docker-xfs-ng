@@ -13,8 +13,6 @@ if [ -s /var/lib/boot2docker/etc/hostname ]; then
 	sethostname "$hostname"
 fi
 
-cgroupfs-mount
-
 mkdir -p /var/lib/boot2docker/log
 chown docker /var/lib/boot2docker/log
 
