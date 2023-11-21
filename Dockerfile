@@ -378,7 +378,7 @@ RUN DOCKER_CHANNEL='stable'; \
 	done
 
 # Docker cli plugins
-ENV DOCKER_BUILDX_VERSION 0.11.2
+ENV DOCKER_BUILDX_VERSION 0.12.0
 RUN mkdir -p usr/local/lib/docker/cli-plugins; \
 	wget -O usr/local/lib/docker/cli-plugins/docker-buildx \
 	"https://github.com/docker/buildx/releases/download/v$DOCKER_BUILDX_VERSION/buildx-v$DOCKER_BUILDX_VERSION.linux-amd64"; \
