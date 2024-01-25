@@ -237,6 +237,7 @@ RUN tcl-tce-load \
 		acpid \
 		bash-completion \
 		ca-certificates \
+		libzstd \
 		curl \
 		e2fsprogs \
 		git \
