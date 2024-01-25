@@ -218,7 +218,7 @@ start() {
 
 	# https://github.com/docker/docker-ce-packaging/blob/468d37e0d6d303b785eb9bfc42612397d683c7e5/deb/systemd/docker.service#L15-L19
 	ulimit -n 1048576   # LimitNOFILE
-	ulimit -p unlimited # LimitNPROC
+	#ulimit -p unlimited # LimitNPROC
 	ulimit -c unlimited # LimitCORE
 
 	mkdir -p /var/lib/boot2docker/log
