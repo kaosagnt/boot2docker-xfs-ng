@@ -379,17 +379,31 @@ RUN DOCKER_CHANNEL='stable'; \
 	done
 
 # Docker cli plugins
+ENV DOCKER_CLI_PLUGINS "usr/local/lib/docker/cli-plugins"
 ENV DOCKER_BUILDX_VERSION 0.12.1
-RUN mkdir -p usr/local/lib/docker/cli-plugins; \
-	wget -O usr/local/lib/docker/cli-plugins/docker-buildx \
-	"https://github.com/docker/buildx/releases/download/v$DOCKER_BUILDX_VERSION/buildx-v$DOCKER_BUILDX_VERSION.linux-amd64"; \
-	chmod +x usr/local/lib/docker/cli-plugins/docker-buildx
+ENV DOCKER_BUILDX_URL "https://github.com/docker/buildx/releases/download/v$DOCKER_BUILDX_VERSION"
+ENV DOCKER_BUILDX_FILE "buildx-v$DOCKER_BUILDX_VERSION.linux-amd64"
+
+RUN mkdir -p "$DOCKER_CLI_PLUGINS"; \
+	wget -O "$DOCKER_CLI_PLUGINS/docker-buildx" \
+	"$DOCKER_BUILDX_URL/$DOCKER_BUILDX_FILE"; \
+	chmod +x "$DOCKER_CLI_PLUGINS/docker-buildx"
+
+RUN echo "$(wget -O- "$DOCKER_BUILDX_URL"'/checksums.txt' \
+		| awk '$2 ~ /linux-amd64$/ { print $1 }') *$DOCKER_CLI_PLUGINS/docker-buildx" \
+		| sha256sum -c -
 
 # CTOP - https://github.com/bcicen/ctop
 ENV CTOP_VERSION 0.7.7
-RUN wget -O  usr/local/bin/ctop \
-	https://github.com/bcicen/ctop/releases/download/v$CTOP_VERSION/ctop-$CTOP_VERSION-linux-amd64; \
+ENV CTOP_URL "https://github.com/bcicen/ctop/releases/download/v$CTOP_VERSION"
+ENV CTOP_FILE "ctop-$CTOP_VERSION-linux-amd64"
+
+RUN wget -O  usr/local/bin/ctop "$CTOP_URL/$CTOP_FILE"; \
 	chmod +x usr/local/bin/ctop
+
+RUN echo "$(wget -O- "$CTOP_URL"'/sha256sums.txt' \
+		| awk '$2 ~ /linux-amd64$/ { print $1 }') *usr/local/bin/ctop" \
+		| sha256sum -c -
 
 # Copy in extra etc/* files
 COPY files/etc etc/
