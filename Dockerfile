@@ -45,12 +45,12 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 14.x
-ENV TCL_VERSION 14.0
+ENV TCL_MAJOR 15.x
+ENV TCL_VERSION 15.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="9b83cc61e606c631fa58dd401ee3f631"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="2f537d9b34a36b87a3488ab16b0e242a"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
@@ -180,7 +180,7 @@ RUN tcl-tce-load bash; \
 	[ "$PS1" = '\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ ' ]
 
 # updated via "update.sh"
-ENV LINUX_VERSION 6.1.81
+ENV LINUX_VERSION 6.6.21
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
 	wget -O /linux.tar.sign "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
@@ -306,19 +306,19 @@ RUN tcl-tce-load open-vm-tools; \
 
 ENV PARALLELS_VERSION 18.2.0-53488
 
-RUN wget -O /parallels.tgz "https://download.parallels.com/desktop/v${PARALLELS_VERSION%%.*}/$PARALLELS_VERSION/ParallelsTools-$PARALLELS_VERSION-boot2docker.tar.gz"; \
-	mkdir /usr/src/parallels; \
-	tar --extract --file /parallels.tgz --directory /usr/src/parallels --strip-components 1; \
-	rm /parallels.tgz
-RUN cp -vr /usr/src/parallels/tools/* ./; \
-	make -C /usr/src/parallels/kmods -f Makefile.kmods -j "$(nproc)" \
-		SRC='/usr/src/linux' \
-		KERNEL_DIR='/usr/src/linux' \
-		KVER="$(< /usr/src/linux/include/config/kernel.release)" \
-		PRL_FREEZE_SKIP=1 \
-	; \
-	find /usr/src/parallels/kmods -name '*.ko' -exec cp -v '{}' lib/modules/*/ ';'; \
-	tcl-chroot prltoolsd -V
+#RUN wget -O /parallels.tgz "https://download.parallels.com/desktop/v${PARALLELS_VERSION%%.*}/$PARALLELS_VERSION/ParallelsTools-$PARALLELS_VERSION-boot2docker.tar.gz"; \
+#	mkdir /usr/src/parallels; \
+#	tar --extract --file /parallels.tgz --directory /usr/src/parallels --strip-components 1; \
+#	rm /parallels.tgz
+#RUN cp -vr /usr/src/parallels/tools/* ./; \
+#	make -C /usr/src/parallels/kmods -f Makefile.kmods -j "$(nproc)" \
+#		SRC='/usr/src/linux' \
+#		KERNEL_DIR='/usr/src/linux' \
+#		KVER="$(< /usr/src/linux/include/config/kernel.release)" \
+#		PRL_FREEZE_SKIP=1 \
+#	; \
+#	find /usr/src/parallels/kmods -name '*.ko' -exec cp -v '{}' lib/modules/*/ ';'; \
+#	tcl-chroot prltoolsd -V
 
 # https://github.com/xenserver/xe-guest-utilities/tags
 # updated via "update.sh"
