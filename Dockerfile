@@ -380,7 +380,7 @@ RUN DOCKER_CHANNEL='stable'; \
 
 # Docker cli plugins
 ENV DOCKER_CLI_PLUGINS "usr/local/lib/docker/cli-plugins"
-ENV DOCKER_BUILDX_VERSION 0.16.1
+ENV DOCKER_BUILDX_VERSION 0.16.2
 ENV DOCKER_BUILDX_URL "https://github.com/docker/buildx/releases/download/v$DOCKER_BUILDX_VERSION"
 ENV DOCKER_BUILDX_FILE "buildx-v$DOCKER_BUILDX_VERSION.linux-amd64"
 
