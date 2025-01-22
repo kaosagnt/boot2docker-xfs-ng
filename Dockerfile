@@ -274,9 +274,9 @@ RUN make -C /usr/src/linux INSTALL_HDR_PATH=/usr/local headers_install
 
 # http://download.virtualbox.org/virtualbox/
 # updated via "update.sh"
-ENV VBOX_VERSION 7.0.22
+ENV VBOX_VERSION 7.1.6
 # https://www.virtualbox.org/download/hashes/$VBOX_VERSION/SHA256SUMS
-ENV VBOX_SHA256 486f90cbfe9ed4bf2b12d726ebf54a839758a237e967aa65fc2c92d90a963021
+ENV VBOX_SHA256 dbbda1645bc05c9260adfe9efc4949cb590ec5ec02680aff936375670cffcafc
 # (VBoxGuestAdditions_X.Y.Z.iso SHA256, for verification)
 
 RUN wget -O /vbox.iso "https://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso"; \
