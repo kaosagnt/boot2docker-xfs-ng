@@ -3,11 +3,11 @@ Author: Tatsushi Demachi, Tianon Gravi
 Partial-Origin: https://github.com/tatsushid/docker-tinycore/blob/017b258a08a41399f65250c9865a163226c8e0bf/8.2/x86_64/src/tce-load.patch
 Unpatched-Source: https://github.com/tinycorelinux/Core-scripts/blob/1a3285fb230f4894c3fda75ab5401318793c1bd8/usr/bin/tce-load
 
-diff --git a/usr/bin/tce-load b/usr/bin/tce-load
-index 1378b90..fea2aa8 100755
---- a/usr/bin/tce-load
-+++ b/usr/bin/tce-load
-@@ -81,15 +81,15 @@ fetch_app() {
+Updated patch for Tinycore Linux >= 16.x Ian McWilliam
+
+--- /usr/bin/tce-load.orig	2025-04-11 17:35:50.346716874 +1000
++++ /usr/bin/tce-load	2025-04-11 17:45:50.868743404 +1000
+@@ -81,15 +81,15 @@
  
  copyInstall() {
  	[ -d /mnt/test ] || sudo /bin/mkdir -p /mnt/test
@@ -21,12 +21,12 @@ index 1378b90..fea2aa8 100755
 -		sudo /bin/umount -d /mnt/test
 +		sudo rm -rf /mnt/test
  	fi
--	[ "$BOOTING" ] || rmdir /mnt/test
+-	[ "$BOOTING" ] || sudo rmdir /mnt/test
 +	[ "$BOOTING" ] || [ -d /mnt/test ] && rmdir /mnt/test
  }
-
+ 
  update_system() {
-@@ -161,8 +161,8 @@ recursive_scan_dep() {
+@@ -161,8 +161,8 @@
  	echo -e "$@"|awk '
  	function recursive_scan(name, optional, mirror, _, depfile, line, i) {
  		gsub(/[\t ]+/, "", name)
@@ -37,7 +37,7 @@ index 1378b90..fea2aa8 100755
  			if (name in MARK) {
  				if (MARK[name] == 2) {
  					if (! SUPPRESS)
-@@ -225,7 +225,7 @@ FROMWHERE=""
+@@ -225,7 +225,7 @@
  for TARGETAPP in $@; do
  
  TARGETAPP="${TARGETAPP%.tcz}.tcz"

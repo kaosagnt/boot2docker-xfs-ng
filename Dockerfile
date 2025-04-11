@@ -45,12 +45,12 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 15.x
-ENV TCL_VERSION 15.0
+ENV TCL_MAJOR 16.x
+ENV TCL_VERSION 16.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
-ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="2f537d9b34a36b87a3488ab16b0e242a"
+ENV TCL_ROOTFS="rootfs64.gz" TCL_ROOTFS_MD5="53986316156921cefc23c8e1cca754a4"
 
 COPY files/tce-load.patch files/udhcpc.patch /tcl-patches/
 
@@ -180,7 +180,7 @@ RUN tcl-tce-load bash; \
 	[ "$PS1" = '\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ ' ]
 
 # updated via "update.sh"
-ENV LINUX_VERSION 6.6.85
+ENV LINUX_VERSION 6.12.23
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
 	wget -O /linux.tar.sign "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
