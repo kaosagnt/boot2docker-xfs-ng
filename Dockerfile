@@ -422,9 +422,9 @@ RUN { \
 		echo "VERSION_ID=$DOCKER_VERSION"; \
 		echo "PRETTY_NAME=\"Boot2Docker $DOCKER_VERSION (TCL $TCL_VERSION)\""; \
 		echo 'ANSI_COLOR="1;34"'; \
-		echo 'HOME_URL="https://github.com/boot2docker/boot2docker"'; \
+		echo 'HOME_URL="https://github.com/kaosagnt/boot2docker-xfs-ng"'; \
 		echo 'SUPPORT_URL="https://blog.docker.com/2016/11/introducing-docker-community-directory-docker-community-slack/"'; \
-		echo 'BUG_REPORT_URL="https://github.com/boot2docker/boot2docker/issues"'; \
+		echo 'BUG_REPORT_URL="https://github.com/kaosagnt/boot2docker-xfs-ng/issues"'; \
 	} > etc/os-release; \
 	sed -i 's/HOSTNAME="box"/HOSTNAME="boot2docker"/g' usr/bin/sethostname; \
 	tcl-chroot sethostname; \
