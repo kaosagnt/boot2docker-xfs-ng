@@ -14,6 +14,7 @@ RUN apt-get update; \
 		git \
 		gnupg2 \
 		golang-go \
+		help2man \
 		kmod \
 		libc6-dev \
 		libc6 \
@@ -128,17 +129,17 @@ RUN mkdir -p proc; \
 
 # as of squashfs-tools 4.4, TCL's unsquashfs is broken... (fails to unsquashfs *many* core tcz files)
 # https://github.com/plougher/squashfs-tools/releases
-ENV SQUASHFS_VERSION 4.6.1
+ENV SQUASHFS_VERSION 4.7
 RUN wget -O squashfs.tgz "https://github.com/plougher/squashfs-tools/archive/$SQUASHFS_VERSION.tar.gz"; \
 	tar --directory=/usr/src --extract --file=squashfs.tgz; \
 	make -C "/usr/src/squashfs-tools-$SQUASHFS_VERSION/squashfs-tools" \
 		-j "$(nproc)" \
 # https://github.com/plougher/squashfs-tools/blob/4.4/squashfs-tools/Makefile#L1
 		GZIP_SUPPORT=1 \
-#		XZ_SUPPORT=1 \
-#		LZO_SUPPORT=1 \
-#		LZ4_SUPPORT=1 \
-#		ZSTD_SUPPORT=1 \
+		XZ_SUPPORT=0 \
+		LZO_SUPPORT=0 \
+		LZ4_SUPPORT=0 \
+		ZSTD_SUPPORT=0 \
 		EXTRA_CFLAGS='-static' \
 		EXTRA_LDFLAGS='-static' \
 		INSTALL_DIR="$PWD/usr/local/bin" \
