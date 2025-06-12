@@ -7,7 +7,7 @@ version='16.0' # TODO auto-detect latest
 # 9.x doesn't seem to use ".../archive/X.Y.Z/..." in the same way as 8.x :(
 
 mirrors=(
-	http://distro.ibiblio.org/tinycorelinux
+	https://distro.ibiblio.org/tinycorelinux
 	http://repo.tinycorelinux.net
 )
 
