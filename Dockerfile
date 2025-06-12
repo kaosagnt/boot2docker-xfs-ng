@@ -45,7 +45,7 @@ RUN echo 'progress = dot:giga' >> ~/.wgetrc; \
 WORKDIR /rootfs
 
 # updated via "update.sh"
-ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
+ENV TCL_MIRRORS="http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net"
 ENV TCL_MAJOR=16.x
 ENV TCL_VERSION=16.0
 

@@ -23,7 +23,7 @@ wget() { command wget --timeout=2 "$@" -o /dev/null; }
 cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
 seds=(
-	-e 's!^(ENV TCL_MIRRORS).*!\1 '"${mirrors[*]}"'!'
+	-e 's!^(ENV TCL_MIRRORS=").*!\1'"${mirrors[*]}"'\"!'
 	-e 's!^(ENV TCL_MAJOR=).*!\1'"$major"'!'
 	-e 's!^(ENV TCL_VERSION=).*!\1'"$version"'!'
 )
