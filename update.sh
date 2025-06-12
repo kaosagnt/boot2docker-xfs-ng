@@ -24,8 +24,8 @@ cd "$(dirname "$(readlink -f "$BASH_SOURCE")")"
 
 seds=(
 	-e 's!^(ENV TCL_MIRRORS).*!\1 '"${mirrors[*]}"'!'
-	-e 's!^(ENV TCL_MAJOR).*!\1 '"$major"'!'
-	-e 's!^(ENV TCL_VERSION).*!\1 '"$version"'!'
+	-e 's!^(ENV TCL_MAJOR=).*!\1'"$major"'!'
+	-e 's!^(ENV TCL_VERSION=).*!\1'"$version"'!'
 )
 
 fetch() {
@@ -60,7 +60,7 @@ kernelVersion="$(
 		| jq -r --arg base "$kernelBase" '.releases[] | .version | select(startswith($base + "."))'
 )"
 seds+=(
-	-e 's!^(ENV LINUX_VERSION).*!\1 '"$kernelVersion"'!'
+	-e 's!^(ENV LINUX_VERSION=).*!\1'"$kernelVersion"'!'
 )
 
 vboxVersion="$(wget -qO- 'https://download.virtualbox.org/virtualbox/LATEST-STABLE.TXT')"
@@ -71,8 +71,8 @@ vboxSha256="$(
 	} | awk '$2 ~ /^[*]?VBoxGuestAdditions_.*[.]iso$/ { print $1 }'
 )"
 seds+=(
-	-e 's!^(ENV VBOX_VERSION).*!\1 '"$vboxVersion"'!'
-	-e 's!^(ENV VBOX_SHA256).*!\1 '"$vboxSha256"'!'
+	-e 's!^(ENV VBOX_VERSION=).*!\1'"$vboxVersion"'!'
+	-e 's!^(ENV VBOX_SHA256=).*!\1'"$vboxSha256"'!'
 )
 
 # PARALLELS_VERSION: https://github.com/boot2docker/boot2docker/pull/1332#issuecomment-420273330
@@ -87,7 +87,7 @@ xenVersion="$(
 		| head -1
 )"
 seds+=(
-	-e 's!^(ENV XEN_VERSION).*!\1 '"$xenVersion"'!'
+	-e 's!^(ENV XEN_VERSION=).*!\1'"$xenVersion"'!'
 )
 
 set -x

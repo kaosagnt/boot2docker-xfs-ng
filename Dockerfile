@@ -46,8 +46,8 @@ WORKDIR /rootfs
 
 # updated via "update.sh"
 ENV TCL_MIRRORS http://distro.ibiblio.org/tinycorelinux http://repo.tinycorelinux.net
-ENV TCL_MAJOR 16.x
-ENV TCL_VERSION 16.0
+ENV TCL_MAJOR=16.x
+ENV TCL_VERSION=16.0
 
 # http://distro.ibiblio.org/tinycorelinux/8.x/x86_64/archive/8.2.1/distribution_files/rootfs64.gz.md5.txt
 # updated via "update.sh"
@@ -129,7 +129,7 @@ RUN mkdir -p proc; \
 
 # as of squashfs-tools 4.4, TCL's unsquashfs is broken... (fails to unsquashfs *many* core tcz files)
 # https://github.com/plougher/squashfs-tools/releases
-ENV SQUASHFS_VERSION 4.7
+ENV SQUASHFS_VERSION=4.7
 RUN wget -O squashfs.tgz "https://github.com/plougher/squashfs-tools/archive/$SQUASHFS_VERSION.tar.gz"; \
 	tar --directory=/usr/src --extract --file=squashfs.tgz; \
 	make -C "/usr/src/squashfs-tools-$SQUASHFS_VERSION/squashfs-tools" \
@@ -181,7 +181,7 @@ RUN tcl-tce-load bash; \
 	[ "$PS1" = '\[\e[1;32m\]\u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]\$ ' ]
 
 # updated via "update.sh"
-ENV LINUX_VERSION 6.12.33
+ENV LINUX_VERSION=6.12.33
 
 RUN wget -O /linux.tar.xz "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.xz"; \
 	wget -O /linux.tar.sign "https://cdn.kernel.org/pub/linux/kernel/v${LINUX_VERSION%%.*}.x/linux-${LINUX_VERSION}.tar.sign"; \
@@ -275,9 +275,9 @@ RUN make -C /usr/src/linux INSTALL_HDR_PATH=/usr/local headers_install
 
 # http://download.virtualbox.org/virtualbox/
 # updated via "update.sh"
-ENV VBOX_VERSION 7.1.10
+ENV VBOX_VERSION=7.1.10
 # https://www.virtualbox.org/download/hashes/$VBOX_VERSION/SHA256SUMS
-ENV VBOX_SHA256 59c92f7f5fd7e081211e989f5117fc53ad8d8800ad74a01b21e97bb66fe62972
+ENV VBOX_SHA256=59c92f7f5fd7e081211e989f5117fc53ad8d8800ad74a01b21e97bb66fe62972
 # (VBoxGuestAdditions_X.Y.Z.iso SHA256, for verification)
 
 RUN wget -O /vbox.iso "https://download.virtualbox.org/virtualbox/$VBOX_VERSION/VBoxGuestAdditions_$VBOX_VERSION.iso"; \
@@ -305,7 +305,7 @@ RUN tcl-tce-load open-vm-tools; \
 	tcl-chroot vmhgfs-fuse --version; \
 	tcl-chroot vmtoolsd --version
 
-ENV PARALLELS_VERSION 18.2.0-53488
+#ENV PARALLELS_VERSION=18.2.0-53488
 
 #RUN wget -O /parallels.tgz "https://download.parallels.com/desktop/v${PARALLELS_VERSION%%.*}/$PARALLELS_VERSION/ParallelsTools-$PARALLELS_VERSION-boot2docker.tar.gz"; \
 #	mkdir /usr/src/parallels; \
@@ -323,7 +323,7 @@ ENV PARALLELS_VERSION 18.2.0-53488
 
 # https://github.com/xenserver/xe-guest-utilities/tags
 # updated via "update.sh"
-ENV XEN_VERSION 7.30.0
+ENV XEN_VERSION=7.30.0
 
 RUN wget -O /xen.tgz "https://github.com/xenserver/xe-guest-utilities/archive/v$XEN_VERSION.tar.gz"; \
 	mkdir /usr/src/xen; \
@@ -351,7 +351,7 @@ RUN tcl-chroot depmod "$(< /usr/src/linux/include/config/kernel.release)"
 RUN echo 'cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot 0 0' \
 	>> etc/fstab
 
-ENV DOCKER_VERSION 28.2.2
+ENV DOCKER_VERSION=28.2.2
 
 # Get the Docker binaries with version that matches our boot2docker version.
 #RUN DOCKER_CHANNEL='edge'; \
@@ -380,10 +380,10 @@ RUN DOCKER_CHANNEL='stable'; \
 	done
 
 # Docker cli plugins
-ENV DOCKER_CLI_PLUGINS "usr/local/lib/docker/cli-plugins"
-ENV DOCKER_BUILDX_VERSION 0.24.0
-ENV DOCKER_BUILDX_URL "https://github.com/docker/buildx/releases/download/v$DOCKER_BUILDX_VERSION"
-ENV DOCKER_BUILDX_FILE "buildx-v$DOCKER_BUILDX_VERSION.linux-amd64"
+ENV DOCKER_CLI_PLUGINS="usr/local/lib/docker/cli-plugins"
+ENV DOCKER_BUILDX_VERSION=0.24.0
+ENV DOCKER_BUILDX_URL="https://github.com/docker/buildx/releases/download/v$DOCKER_BUILDX_VERSION"
+ENV DOCKER_BUILDX_FILE="buildx-v$DOCKER_BUILDX_VERSION.linux-amd64"
 
 RUN mkdir -p "$DOCKER_CLI_PLUGINS"; \
 	wget -O "$DOCKER_CLI_PLUGINS/docker-buildx" \
@@ -395,9 +395,9 @@ RUN echo "$(wget -O- "$DOCKER_BUILDX_URL"'/checksums.txt' \
 		| sha256sum -c -
 
 # CTOP - https://github.com/bcicen/ctop
-ENV CTOP_VERSION 0.7.7
-ENV CTOP_URL "https://github.com/bcicen/ctop/releases/download/v$CTOP_VERSION"
-ENV CTOP_FILE "ctop-$CTOP_VERSION-linux-amd64"
+ENV CTOP_VERSION=0.7.7
+ENV CTOP_URL="https://github.com/bcicen/ctop/releases/download/v$CTOP_VERSION"
+ENV CTOP_FILE="ctop-$CTOP_VERSION-linux-amd64"
 
 RUN wget -O  usr/local/bin/ctop "$CTOP_URL/$CTOP_FILE"; \
 	chmod +x usr/local/bin/ctop
