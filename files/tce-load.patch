@@ -5,8 +5,8 @@ Unpatched-Source: https://github.com/tinycorelinux/Core-scripts/blob/1a3285fb230
 
 Updated patch for Tinycore Linux >= 16.x Ian McWilliam
 
---- /usr/bin/tce-load.orig	2025-04-11 17:35:50.346716874 +1000
-+++ /usr/bin/tce-load	2025-04-11 17:45:50.868743404 +1000
+--- /usr/bin/tce-load.orig	2025-10-05 14:48:25.681043443 +1100
++++ /usr/bin/tce-load	2025-10-05 14:58:22.825985424 +1100
 @@ -81,15 +81,15 @@
  
  copyInstall() {
@@ -16,7 +16,7 @@ Updated patch for Tinycore Linux >= 16.x Ian McWilliam
  	if [ "$?" == 0 ]; then
  		if [ "$(ls -A /mnt/test)" ]; then
  			yes "$FORCE" | sudo /bin/cp -ai /mnt/test/. / 2>/dev/null
- 			[ -n "`find /mnt/test/ -type d -name modules`" ] && MODULES=TRUE
+ 			[ -d /mnt/test/usr/local/lib/modules/$KERNELVER ] && MODULES=TRUE
  		fi
 -		sudo /bin/umount -d /mnt/test
 +		sudo rm -rf /mnt/test
