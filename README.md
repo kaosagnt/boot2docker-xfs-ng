@@ -19,7 +19,7 @@ See [docker/machine#4537](https://github.com/docker/machine/issues/4537) for som
 ## Features
 
 * Recent Linux Kernel, Docker pre-installed and ready-to-use
-* Tiny Core Linux 16.x
+* Tiny Core Linux 17.x
 * CTOP
 * XFS filesystem by default. (Will automount exisitng `ext4` filesystems).
 * VM guest additions (VirtualBox, VMware, XenServer)
