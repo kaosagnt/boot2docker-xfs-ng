@@ -2,7 +2,7 @@
 
 NOTE: This is a fork from the original https://github.com/boot2docker/boot2docker/
 
-It uses TCL (TinyCore Linux 16.x) and the XFS filesystem by default.
+It uses TCL (TinyCore Linux 17.x) and the XFS filesystem by default.
 
 Boot2Docker is a lightweight Linux distribution made specifically to run
 [Docker](https://www.docker.com/) containers. It runs completely from RAM, is a
