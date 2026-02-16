@@ -2,8 +2,8 @@
 set -Eeuo pipefail
 
 # TODO http://distro.ibiblio.org/tinycorelinux/latest-x86_64
-major='16.x'
-version='16.2' # TODO auto-detect latest
+major='17.x'
+version='17.0' # TODO auto-detect latest
 # 9.x doesn't seem to use ".../archive/X.Y.Z/..." in the same way as 8.x :(
 
 mirrors=(
@@ -12,7 +12,7 @@ mirrors=(
 )
 
 # https://www.kernel.org/
-kernelBase='6.12'
+kernelBase='6.18'
 
 # avoid issues with slow Git HTTP interactions (*cough* sourceforge *cough*)
 export GIT_HTTP_LOW_SPEED_LIMIT='100'
