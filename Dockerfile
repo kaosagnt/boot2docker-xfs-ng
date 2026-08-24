@@ -394,17 +394,20 @@ RUN echo "$(wget -O- "$DOCKER_BUILDX_URL"'/checksums.txt' \
 		| awk '$2 ~ /linux-amd64$/ { print $1 }') *$DOCKER_CLI_PLUGINS/docker-buildx" \
 		| sha256sum -c -
 
-# CTOP - https://github.com/bcicen/ctop
-ENV CTOP_VERSION=0.7.7
-ENV CTOP_URL="https://github.com/bcicen/ctop/releases/download/v$CTOP_VERSION"
-ENV CTOP_FILE="ctop-$CTOP_VERSION-linux-amd64"
+# DTOP - https://github.com/amir20/dtop
+ENV DTOP_VERSION=0.8.0
+ENV DTOP_URL="https://github.com/amir20/dtop/releases/download/v$DTOP_VERSION"
+ENV DTOP_FILE="dtop-x86_64-unknown-linux-gnu"
+ENV DTOP_EXT=".tar.gz"
+RUN wget "$DTOP_URL/$DTOP_FILE$DTOP_EXT"
 
-RUN wget -O  usr/local/bin/ctop "$CTOP_URL/$CTOP_FILE"; \
-	chmod +x usr/local/bin/ctop
-
-RUN echo "$(wget -O- "$CTOP_URL"'/sha256sums.txt' \
-		| awk '$2 ~ /linux-amd64$/ { print $1 }') *usr/local/bin/ctop" \
+RUN echo "$(wget -O- "$DTOP_URL"'/sha256.sum' \
+		| awk '$2 ~ /x86_64-unknown-linux-gnu.tar.gz$/ { print $1 }') *$DTOP_FILE$DTOP_EXT" \
 		| sha256sum -c -
+
+RUN tar -xf "$DTOP_FILE$DTOP_EXT" --strip-components=1 "$DTOP_FILE/dtop"; \
+	mv dtop usr/local/bin/; \
+	rm -f "$DTOP_FILE$DTOP_EXT"
 
 # Copy in extra etc/* files
 COPY files/etc etc/
