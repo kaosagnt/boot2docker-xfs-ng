@@ -20,7 +20,7 @@ See [docker/machine#4537](https://github.com/docker/machine/issues/4537) for som
 
 * Recent Linux Kernel, Docker pre-installed and ready-to-use
 * Tiny Core Linux 17.x
-* CTOP
+* DTOP
 * XFS filesystem by default. (Will automount exisitng `ext4` filesystems).
 * VM guest additions (VirtualBox, VMware, XenServer)
 * Container persistence via disk automount on `/var/lib/docker`
