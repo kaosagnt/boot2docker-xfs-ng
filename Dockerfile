@@ -395,7 +395,7 @@ RUN echo "$(wget -O- "$DOCKER_BUILDX_URL"'/checksums.txt' \
 		| sha256sum -c -
 
 # DTOP - https://github.com/amir20/dtop
-ENV DTOP_VERSION=0.8.0
+ENV DTOP_VERSION=0.9.4
 ENV DTOP_URL="https://github.com/amir20/dtop/releases/download/v$DTOP_VERSION"
 ENV DTOP_FILE="dtop-x86_64-unknown-linux-gnu"
 ENV DTOP_EXT=".tar.gz"
