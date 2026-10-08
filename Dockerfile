@@ -302,8 +302,8 @@ RUN make -C /usr/src/vbox/amd64/src/vboxguest -j "$(nproc)" \
 
 # TCL includes VMware's open-vm-tools 10.2.0.1608+ (no reason to compile that ourselves)
 RUN tcl-tce-load open-vm-tools; \
-	tcl-chroot vmhgfs-fuse --version; \
-	tcl-chroot vmtoolsd --version
+	tcl-chroot vmhgfs-fuse --version
+#	tcl-chroot vmtoolsd --version
 
 #ENV PARALLELS_VERSION=18.2.0-53488
 
