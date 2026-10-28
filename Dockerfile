@@ -463,7 +463,7 @@ RUN awk -F: ' \
 	chmod +x usr/local/sbin/autologin
 
 # ssh config prep
-RUN [ ! -f usr/local/etc/sshd_config ]; \
+RUN cp usr/local/etc/ssh/sshd_config usr/local/etc/ssh/sshd_config.orig ; \
 	sed -r \
 		-e 's/^#(UseDNS[[:space:]])/\1/' \
 		-e 's/^#(PermitUserEnvironment)[[:space:]].*$/\1 yes/' \
